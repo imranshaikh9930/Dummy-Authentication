@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {useNavigate} from 'react-router-dom'
 import "../App.css";
 function Profile() {
+    const [user,setUser] = useState([]);
     const navigate = useNavigate();
   const data = JSON.parse(localStorage.getItem("userData"));
  
@@ -10,7 +11,8 @@ function Profile() {
     fetch(`https://dummyjson.com/users/${id}`)
       .then((res) => res.json())
       .then((data) => {
-       console.log(data)
+    //    console.log(data)
+       setUser(data);
       });
   }, [id]);
   function handleLogout(){
@@ -18,28 +20,30 @@ function Profile() {
     navigate("/");
   }
 
+
+
   return (
     <div className="profile">
 
-          {data ? (
+          {user ? (
         <>
           <p>
             {" "}
-            <b>ID:</b> {data.id}
+            <b>ID:</b> {user.id}
           </p>
           <p>
             {" "}
-            <b>Email:</b> {data.email}
+            <b>Email:</b> {user.email}
           </p>
           <p>
             {" "}
             <b>FirstName: </b>
-            {data.firstName}
+            {user.firstName}
           </p>
           <p>
             {" "}
             <b>Gender: </b>
-            {data.gender}
+            {user.gender}
           </p>
           <img src={data.image} alt="" />
           <p className="token">
