@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from 'react-router-dom'
 import "../App.css";
 function Profile() {
-  const [user, setUser] = useState([]);
-  const navigate = useNavigate();
+    const [user,setUser] = useState([]);
+    const navigate = useNavigate();
   const data = JSON.parse(localStorage.getItem("userData"));
-
+ 
   const id = data.id;
   useEffect(() => {
     fetch(`https://dummyjson.com/users/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        //    console.log(data)
-        setUser(data);
+    //    console.log(data)
+       setUser(data);
       });
   }, [id]);
-  function handleLogout() {
+  function handleLogout(){
+
     navigate("/");
   }
 
-  console.log(user);
+console.log(user)
 
   return (
     <div className="profile">
-      {user ? (
+
+          {user ? (
         <>
           <p>
             {" "}
@@ -49,7 +51,7 @@ function Profile() {
             {user.gender}
           </p>
           <img src={user.image} alt="" />
-
+         
           <p>
             <b>UserName:</b>
             {user.username}
@@ -58,9 +60,8 @@ function Profile() {
             <b>phone:</b>
             {user.phone}
           </p>
-          <button className="logout" onClick={handleLogout}>
-            Logout
-          </button>
+          <button className="logout" onClick={handleLogout}>Logout</button>
+   
         </>
       ) : (
         "No Data Found"
