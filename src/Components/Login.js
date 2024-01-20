@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 // import "../App.css";
 
@@ -16,8 +16,8 @@ function Login() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          username: "atuny0" ,
-          password: "9uQFF1Lh",
+          username: username ,
+          password: password,
         }),
       });
 

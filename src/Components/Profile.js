@@ -20,7 +20,7 @@ function Profile() {
     navigate("/");
   }
 
-
+console.log(user)
 
   return (
     <div className="profile">
@@ -42,16 +42,23 @@ function Profile() {
           </p>
           <p>
             {" "}
+            <b>LastName: </b>
+            {user.lastName}
+          </p>
+          <p>
+            {" "}
             <b>Gender: </b>
             {user.gender}
           </p>
-          <img src={data.image} alt="" />
-          <p className="token">
-            <b>Token:</b> {data.token}
-          </p>
+          <img src={user.image} alt="" />
+         
           <p>
             <b>UserName:</b>
-            {data.username}
+            {user.username}
+          </p>
+          <p>
+            <b>phone:</b>
+            {user.phone}
           </p>
           <button className="logout" onClick={handleLogout}>Logout</button>
    
